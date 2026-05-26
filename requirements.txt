@@ -1,0 +1,2 @@
+GitPython==3.1.50
+Requests==2.34.2
