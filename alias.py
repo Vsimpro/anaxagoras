@@ -113,7 +113,7 @@ def main():
         "https://gitee.com/",
         "https://gitflic.ru/user/",
         "https://framagit.org/",
-        "https://git.disroot.org/,"
+        "https://git.disroot.org/",
         "https://tildegit.org/",
     ]
     
