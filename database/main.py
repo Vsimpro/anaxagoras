@@ -98,7 +98,7 @@ def query_database(query: str, user_input: tuple = None) -> list:
 
     except Exception as e:
         print(f"[SQLITE][!] Ran into an issue while running execute({query}). Details: ", e)
-        return False
+        return []
 
 
 def insert_data(query: str, data) -> bool:
@@ -119,7 +119,7 @@ def insert_data(query: str, data) -> bool:
 
     try:
         # If data is of type tuple, use execute
-        if type(data) == tuple:
+        if isinstance( data, tuple ):
             cursor.execute(query, data)
             CONNECTION.commit()
 
@@ -140,7 +140,6 @@ def insert_data(query: str, data) -> bool:
         print(f"[SQLITE][!] Ran into an issue while running execute({query}), with data {data}, details: ", e)
         return -1
 
-    return -1
 
 
 def update_data(query: str, data) -> tuple:
@@ -160,7 +159,7 @@ def update_data(query: str, data) -> tuple:
 
     try:
         # If data is not of type tuple, skip interaction.
-        if type(data) == tuple:
+        if isinstance( data, tuple ):
             cursor.execute(query, data)
             CONNECTION.commit()
 
