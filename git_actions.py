@@ -80,10 +80,10 @@ def get_projects( git_profile_link ):
         xml = requests.get( url , timeout=(5, 10), headers = HEADERS)
         xml.raise_for_status()
         
-        id, link, title, updated, author, raw_entry = \
-            parse_xml( url, xml.text )
-        
-        store(id, link, title, updated, author, raw_entry)
+        entries = parse_xml( url, xml.text )
+        for entry in entries:
+            id, link, title, updated, author, raw_entry  = entry
+            store(id, link, title, updated, author, raw_entry)
     
     # Bit of a hack. xml_parsing tries to return empty values, 
     # there are no entries. We can catch that here.

@@ -43,6 +43,7 @@ def normalize_repo_link(link: str) -> str:
 
 
 def parse_generic_xml( xml : str ):
+    entries   = []
     root      = ET.fromstring( xml )
     namespace = {
         "atom":  "http://www.w3.org/2005/Atom",
@@ -76,17 +77,21 @@ def parse_generic_xml( xml : str ):
             author = entry.findtext("atom:author/atom:name", namespaces=namespace)
         
         raw_entry = ET.tostring(entry, encoding="unicode")
+        entries.append((id, link, title, updated, author, raw_entry))
     
-    return id, link, title, updated, author, raw_entry
+    return entries
 
 
 GIT_INSTANCES = {
-    "github.com"      : parse_generic_xml,
-    "gitlab.com"      : parse_generic_xml,
-    "codeberg.org"    : parse_generic_xml,
-    "gitee.com"       : None,
-    "gitflic.ru"      : None,
-    "framagit.org"    : parse_generic_xml,
-    "git.disroot.org" : parse_generic_xml,
-    "tildegit.org"    : parse_generic_xml,
+    "github.com"        : parse_generic_xml,
+    "gitlab.com"        : parse_generic_xml,
+    "codeberg.org"      : parse_generic_xml,
+    "gitee.com"         : None,
+    "gitflic.ru"        : None,
+    "framagit.org"      : parse_generic_xml,
+    "git.disroot.org"   : parse_generic_xml,
+    "tildegit.org"      : parse_generic_xml,
+    "gitea.com"         : parse_generic_xml,
+    "foss.heptapod.net" : parse_generic_xml,
+    "0xacab.org"        : parse_generic_xml,
 }

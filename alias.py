@@ -120,6 +120,10 @@ def main():
         "https://framagit.org/",
         "https://git.disroot.org/",
         "https://tildegit.org/",
+        "https://sr.ht/~",
+        "https://gitea.com/",
+        "https://foss.heptapod.net/",
+        "https://0xacab.org/",
     ]
     
     # Iterate through all the services
