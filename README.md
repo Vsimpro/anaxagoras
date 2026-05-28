@@ -11,5 +11,27 @@ NightmareEclipse/Deadeclipse666 has been creating a lot of fuzz with their publi
 
 This repository is a scraper to try and monitor the situation.
 
+At this moment, it is tracking deadeclipse666 blogspot account, and trying to find any of the known alias' and their variants from git instances. Once an account is activated on a git instance, it will conveyor-belt straight into following its activity, as the repo used to do with gitlab. 
+
+For the old, tracker, check legacy/git_actions_legacy.py
+
 
 ## Currently bit in progress again!
+
+Running:
+```sh
+pip install -r requirements.txt
+```
+
+add "DISCORD" variable into .env, as follows:
+```sh
+DISCORD = "https://discord.com/api/...
+```
+
+
+This will run all the scrapers.
+```sh
+python3 main.py
+```
+
+
