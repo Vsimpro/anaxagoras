@@ -71,9 +71,14 @@ def diff_and_save( url, status_code ):
         
         return False 
     
+    # Check if site goes down (possible with small git instances)
+    if status_code >= 500:
+        print(f"[{__name__}] The url { url } is currently experiencing problems: { status_code }. Ignoring.")
+        return False
+    
+    # Diff!
     old_status_code = result[ 0 ][ 0 ]
     if old_status_code != status_code:
-        # Diff!
         print(f"[{__name__}] Noticed a DIFF in { url }. (Old,New) = {old_status_code,status_code}")
         
         notify( url, status_code, old_status_code )
